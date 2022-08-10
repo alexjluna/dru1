@@ -1,0 +1,5 @@
+name: 'Forcontu Block'
+type: module
+description: 'Forcontu Block Plugin Type'
+core_version_requirement: ^9
+package: Luna
