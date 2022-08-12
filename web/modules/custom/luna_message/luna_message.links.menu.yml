@@ -1,0 +1,10 @@
+entity.luna_message_module.settings:
+  title: 'Message'
+  description: 'Configure a Message entity type.'
+  route_name:  entity.luna_message_module.settings
+  parent: system.admin_structure
+entity.luna_message_module.collection:
+  title: 'Messages'
+  description: 'List of messages.'
+  route_name: entity.luna_message_module.collection
+  parent: system.admin_content

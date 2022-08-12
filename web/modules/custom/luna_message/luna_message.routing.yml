@@ -1,0 +1,7 @@
+entity.luna_message_module.settings:
+  path: 'admin/structure/luna-message-module'
+  defaults:
+    _form: '\Drupal\luna_message\Form\LunaMessageModuleSettingsForm'
+    _title: 'Message'
+  requirements:
+    _permission: 'administer message'

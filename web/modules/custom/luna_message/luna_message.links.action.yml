@@ -1,0 +1,5 @@
+luna_message_module.add_form:
+  title: 'Add message'
+  route_name: entity.luna_message_module.add_form
+  appears_on:
+    - entity.luna_message_module.collection

@@ -1,0 +1,5 @@
+name: 'Luna Message'
+type: module
+description: 'Luna Message'
+core_version_requirement: ^9
+package: Luna

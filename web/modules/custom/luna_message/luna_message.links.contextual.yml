@@ -1,0 +1,10 @@
+entity.luna_message_module.edit_form:
+  route_name: entity.luna_message_module.edit_form
+  group: luna_message_module
+  title: Edit
+
+entity.luna_message_module.delete_form:
+  route_name: entity.luna_message_module.delete_form
+  group: luna_message_module
+  title: Delete
+  weight: 10

@@ -1,0 +1,7 @@
+luna_form.luna:
+  path: '/luna-form/luna'
+  defaults:
+    _title: 'Luna'
+    _form: 'Drupal\luna_form\Form\LunaForm'
+  requirements:
+    _permission: 'access content'

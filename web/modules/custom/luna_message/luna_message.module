@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * @file
+ * Provides a message entity type.
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\luna_message\Entity\LunaMessageModule;
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function luna_message_theme() {
+  return [
+    'luna_message_module' => [
+      'render element' => 'elements',
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for message templates.
+ *
+ * Default template: luna-message-module.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the message information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_luna_message_module(array &$variables) {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_user_cancel().
+ */
+function luna_message_user_cancel($edit, UserInterface $account, $method) {
+  switch ($method) {
+    case 'user_cancel_block_unpublish':
+      // Unpublish messages.
+      $storage = \Drupal::entityTypeManager()->getStorage('luna_message_module');
+      $luna_message_module_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->condition('status', 1)
+        ->execute();
+      foreach ($storage->loadMultiple($luna_message_module_ids) as $luna_message_module) {
+        $luna_message_module->set('status', FALSE);
+        $luna_message_module->save();
+      }
+      break;
+
+    case 'user_cancel_reassign':
+      // Anonymize messages.
+      $storage = \Drupal::entityTypeManager()->getStorage('luna_message_module');
+      $luna_message_module_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->execute();
+      foreach ($storage->loadMultiple($luna_message_module_ids) as $luna_message_module) {
+        $luna_message_module->setOwnerId(0);
+        $luna_message_module->save();
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_predelete() for user entities.
+ */
+function luna_message_user_predelete(UserInterface $account) {
+  // Delete messages.
+  $storage = \Drupal::entityTypeManager()->getStorage('luna_message_module');
+  $luna_message_module_ids = $storage->getQuery()
+    ->condition('uid', $account->id())
+    ->execute();
+  $luna_message_modules = $storage->loadMultiple($luna_message_module_ids);
+  $storage->delete($luna_message_modules);
+}
