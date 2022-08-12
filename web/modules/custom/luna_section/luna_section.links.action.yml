@@ -1,0 +1,5 @@
+entity.luna_section_module.add_form:
+  route_name: 'entity.luna_section_module.add_form'
+  title: 'Add section'
+  appears_on:
+    - entity.luna_section_module.collection

@@ -2,6 +2,7 @@
 
 namespace Drupal\node\Entity;
 
+use Drupal\Core\Entity\Annotation\ContentEntityType;
 use Drupal\Core\Entity\EditorialContentEntityBase;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;

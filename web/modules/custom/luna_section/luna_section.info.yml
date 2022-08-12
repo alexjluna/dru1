@@ -1,0 +1,5 @@
+name: 'Luna Section Module'
+type: module
+description: 'Luna Section Entity Type'
+core_version_requirement: ^9
+package: Luna

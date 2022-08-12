@@ -1,0 +1,31 @@
+entity.luna_section_module.collection:
+  path: '/admin/structure/luna-section-module'
+  defaults:
+    _entity_list: 'luna_section_module'
+    _title: 'Section configuration'
+  requirements:
+    _permission: 'administer luna_section_module'
+
+entity.luna_section_module.add_form:
+  path: '/admin/structure/luna_section_module/add'
+  defaults:
+    _entity_form: 'luna_section_module.add'
+    _title: 'Add a section'
+  requirements:
+    _permission: 'administer luna_section_module'
+
+entity.luna_section_module.edit_form:
+  path: '/admin/structure/luna-section-module/{luna_section_module}'
+  defaults:
+    _entity_form: 'luna_section_module.edit'
+    _title: 'Edit a section'
+  requirements:
+    _permission: 'administer luna_section_module'
+
+entity.luna_section_module.delete_form:
+  path: '/admin/structure/luna-section-module/{luna_section_module}/delete'
+  defaults:
+    _entity_form: 'luna_section_module.delete'
+    _title: 'Delete a section'
+  requirements:
+    _permission: 'administer luna_section_module'

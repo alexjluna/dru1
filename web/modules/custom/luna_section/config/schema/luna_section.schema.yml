@@ -1,0 +1,20 @@
+luna_section.luna_section_module.*:
+  type: config_entity
+  label: Section
+  mapping:
+    id:
+      type: string
+      label: ID
+    label:
+      type: label
+      label: Label
+    uuid:
+      type: string
+    description:
+      type: string
+    urlPattern:
+      type: string
+      label: 'URL Pattern'
+    color:
+      type: string
+      label: 'Color'
