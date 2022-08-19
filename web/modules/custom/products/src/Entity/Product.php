@@ -163,17 +163,4 @@ class Product extends ContentEntityBase implements ProductInterface {
     $this->set('created', $timestamp);
     return $this;
   }
-
-  public function getChangedTime() {
-    return $this->get('changed')->value();
-  }
-
-  public function setChangedTime($changed) {
-    $this->set('changed', $changed);
-    return $this;
-  }
-
-  public function getChangedTimeAcrossTranslations() {
-    return $this;
-  }
 }
